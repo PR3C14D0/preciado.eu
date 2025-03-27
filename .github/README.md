@@ -1,6 +1,9 @@
 # preciado.eu
 - My personal porfolio source code.
 
+# Screenshots
+![Index](./img/main-scsht.png)
+
 # Project structure
 
 ```
