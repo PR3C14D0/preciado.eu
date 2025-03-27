@@ -9,18 +9,20 @@ const Sitemap = () => {
 
 export const getServerSideProps: GetServerSideProps = async ({res}: {res: any}) => {
     const baseUrl = "https://preciado.eu";
-    const staticPages = fs
+    const staticPages: Array<string> = fs
     .readdirSync("./src/pages")
     .filter((staticPage) => {
       return ![
         "_app.tsx",
         "404.tsx",
         "sitemap.xml.tsx",
-        "_document.tsx"
+        "_document.tsx",
+        "blog",
+        "index.tsx"
       ].includes(staticPage);
     })
     .map((staticPagePath) => {
-      return `${baseUrl}/${staticPagePath.replace('.tsx', '')}`;
+        return `${baseUrl}/${staticPagePath.replace('.tsx', '')}`;
     });
 
     const blogPosts = await fetch(`${EnvConf().api}/blog`);
@@ -29,8 +31,6 @@ export const getServerSideProps: GetServerSideProps = async ({res}: {res: any}) 
     const blogPages = blogData.posts.map((post: { _id: string }) => {
         return `${baseUrl}/blog/${post._id}`;
     })
-
-    console.log(blogPages)
 
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
