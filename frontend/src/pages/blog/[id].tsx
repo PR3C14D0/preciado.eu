@@ -119,7 +119,11 @@ const ViewPost: React.FC<{data: {title:string, imgUrl: string, content: string, 
                             ) : (
                                 <p className="bg-neutral-800 py-1 px-1">{String(children)}</p>
                             )
-                        }
+                        },
+                        table: ({className, children}) => <div className={className + " border-neutral-900 border-2 rounded-xl px-6 py-4 w-auto items-center justify-center flex-col"}><table className="">{children}</table></div>,
+                        thead: ({className, children}) => <thead className={className + " flex-row items-center"}>{children}</thead>,
+                        th: ({className, children}) => <th className={`${className ? className : ""} pb-8`}>{children}</th>,
+                        td: ({className, children}) => <td className={`${className ? className : ""} pb-4 px-4`}>{children}</td>
                     }}
                      remarkPlugins={[remarkGfm]} 
                      rehypePlugins={[rehypeSanitize]}>
