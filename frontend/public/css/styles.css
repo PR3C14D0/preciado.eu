@@ -1,0 +1,10 @@
+.typewriter {
+    border-right: .15em solid white;
+    animation:
+        blink-caret .25s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white }
+}
