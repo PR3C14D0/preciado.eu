@@ -22,7 +22,10 @@ jobs:
         run: |
           cd frontend
           touch .env
-          echo ${{ secrets.FRONTEND_ENV_FILE }} >> .env
+          echo "NEXT_PUBLIC_PAGE_TITLE=\"${{ secrets.NEXT_PUBLIC_PAGE_TITLE }}\"" >> .env
+          echo "NEXT_PUBLIC_API_URL=\"${{ secrets.NEXT_PUBLIC_API_URL }}\"" >> .env
+          echo "LNK_LINK=\"${{ secrets.LNK_LINK }}\"" >> .env
+          echo "GH_LINK=\"${{ secrets.GH_LINK }}\"" >> .env
 
       - name: 📦 Install dependencies (Frontend)
         run: |
