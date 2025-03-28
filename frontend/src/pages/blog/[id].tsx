@@ -92,13 +92,13 @@ const ViewPost: React.FC<{data: {title:string, imgUrl: string, content: string, 
                         h1: ({children}) => <h1 onClick={copyLink} className="pb-8 text-4xl font-fira mt-4 mb-2 flex flex-row items-center group hover:cursor-pointer">
                                 <i className="opacity-0 group-hover:opacity-100 transition fa-solid fa-link text-gray-600 text-xl"></i>
                                 &nbsp;&nbsp;
-                                <div id={children.toLowerCase().replace(/\s+/g, '-')} className="flex flex-col">
+                                <div id={children?.toLowerCase().replace(/\s+/g, '-')} className="flex flex-col">
                                     {children}
                                 </div>
                             </h1>,
                         a: ({children, href}) => <a href={href} className="font-fira text-sky-400 hover:text-sky-600 hover:underline transition">{children}</a>,
                         p: ({children}) => <p className="text-white font-fira text-lg">{children}</p>,
-                        li: ({children, className}) => <li className={className + " flex flex-row space-x-1 items-center"}>{children}</li>,
+                        li: ({className, children}) => <li className={`${className ? className : ""} pl-8 flex flex-row space-x-1 items-center`}>•&nbsp;&nbsp;{children}</li>,
                         code: ({node, inline, className, children, ...props}) => {
                             const match = /language-(\w+)/.exec(className || '')
                             const language = match ? match[1] : 'text'
@@ -125,7 +125,7 @@ const ViewPost: React.FC<{data: {title:string, imgUrl: string, content: string, 
                         th: ({className, children}) => <th className={`${className ? className : ""} pb-8`}>{children}</th>,
                         td: ({className, children}) => <td className={`${className ? className : ""} pb-4 px-4`}>{children}</td>,
                         ul: ({className, children}) => <ul className={`${className ? className : ""} flex-col space-y-4`}>{children}</ul>,
-                        li: ({className, children}) => <li className={`${className ? className : ""} pl-8`}>•&nbsp;&nbsp;{children}</li>
+                        
                     }}
                      remarkPlugins={[remarkGfm]} 
                      rehypePlugins={[rehypeSanitize]}>
