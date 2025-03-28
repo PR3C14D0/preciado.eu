@@ -9,6 +9,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { EnvConf } from '@/src/lib/env';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import slugify from 'slugify';
 
 
 const ViewPost: React.FC<{data: {title:string, imgUrl: string, content: string, description:string, _id: string}}> = ({data}) => {
@@ -87,12 +88,12 @@ const ViewPost: React.FC<{data: {title:string, imgUrl: string, content: string, 
 
             {/* Article Content */}
             <div className="mt-[40vh] px-6 pt-20 pb-12 bg-neutral-950 max-w-4xl mx-auto font-fira space-y-4">
-                    <Markdown
+                <Markdown
                     components={{
                         h1: ({children}) => <h1 onClick={copyLink} className="pb-8 text-4xl font-fira mt-4 mb-2 flex flex-row items-center group hover:cursor-pointer">
                                 <i className="opacity-0 group-hover:opacity-100 transition fa-solid fa-link text-gray-600 text-xl"></i>
                                 &nbsp;&nbsp;
-                                <div id={children?.toLowerCase().replace(/\s+/g, '-')} className="flex flex-col">
+                                <div id={slugify(typeof children === "string" ? children : "undefined", '-')} className="flex flex-col">
                                     {children}
                                 </div>
                             </h1>,
