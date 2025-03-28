@@ -1,4 +1,4 @@
-name: Deploy Frontend
+name: Next.JS Build
 
 on:
   push:

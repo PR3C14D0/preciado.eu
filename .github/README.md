@@ -1,6 +1,9 @@
 # preciado.eu
 - My personal porfolio source code.
 
+    ![Next.JS Build](https://github.com/PR3C14D0/preciado.eu/actions/workflows/main.yml/badge.svg)
+
+
 # Screenshots
 ![Index](./img/main-scsht.png)
 
