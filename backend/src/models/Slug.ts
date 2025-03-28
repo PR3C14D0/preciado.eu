@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, Types } from 'mongoose';
 
 const SlugSchema = new Schema({
     slug: {
@@ -6,7 +6,7 @@ const SlugSchema = new Schema({
         required: true
     },
     objId: {
-        type: Schema.Types.ObjectId,
+        type: String,
         required: true
     }
 });

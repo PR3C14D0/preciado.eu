@@ -1,4 +1,5 @@
 import Post from "../models/Post";
+import Slug from "../models/Slug";
 import { IPost } from "../types/Post";
 
 const CheckCreationBody = async (req: any, res: any, next: any) => {
@@ -10,6 +11,21 @@ const CheckCreationBody = async (req: any, res: any, next: any) => {
     return next();
 }
 
+/* 
+    Hey there! You're watching this? Check this out: 
+        https://open.spotify.com/intl-es/track/7K6IsPjcdZcvGkes0zmdzC?si=cfb1d8c298b34c47 
+*/
+const ResolveSlugId = async (req: any, res: any, next: any) => {
+    const { id } = req.params;
+
+    if(!await Slug.exists({slug: id})) return res.status(404).json({message: 'Not Found', code: 404});
+
+    const objId = (await Slug.findOne({slug: id}))?.objId;
+
+    res.locals.objId = objId;
+    next();
+}
+
 const CheckRepeatedPost = async (req: any, res: any, next: any) => {
     const { title }: { title: string } = req.body;
     if(await Post.exists({title})) return res.status(409).json({message: 'Conflict', code: 409});
@@ -18,10 +34,10 @@ const CheckRepeatedPost = async (req: any, res: any, next: any) => {
 }
 
 const CheckPostExists = async (req: any, res: any, next: any) => {
-    const { id } = req.params;
+    const { objId } = res.locals;
     
     try {
-        const post: IPost | null = await Post.findById(id);
+        const post: IPost | null = await Post.findById(objId);
         if(post == null) return res.status(404).json({message: 'Not found', code: 404});
 
         return next();
@@ -34,5 +50,6 @@ const CheckPostExists = async (req: any, res: any, next: any) => {
 export {
     CheckCreationBody,
     CheckRepeatedPost,
-    CheckPostExists
+    CheckPostExists,
+    ResolveSlugId
 }

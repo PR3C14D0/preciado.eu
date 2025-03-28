@@ -3,7 +3,7 @@ const router = Router();
 
 import { VerifyJWT } from '../middlewares/auth.middleware';
 import { CreatePost, GetPosts, GetPostById } from '../controllers/blog.controller';
-import { CheckCreationBody, CheckRepeatedPost, CheckPostExists } from '../middlewares/blog.middleware';
+import { CheckCreationBody, CheckRepeatedPost, CheckPostExists, ResolveSlugId } from '../middlewares/blog.middleware';
 
 import { IPost } from '../types/Post';
 
@@ -14,10 +14,10 @@ router.route('/')
 })
 
 router.route('/:id')
-.get([CheckPostExists], async (req: any, res: any) => {
-    const { id } = req.params;
+.get([ResolveSlugId, CheckPostExists], async (req: any, res: any) => {
+    const { objId } = res.locals;
 
-    const post: IPost | null = await GetPostById(id);
+    const post: IPost | null = await GetPostById(objId);
     if(post)
         return res.status(200).json({message: 'OK', code: 200, post});
     else
