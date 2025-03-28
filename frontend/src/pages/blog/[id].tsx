@@ -92,7 +92,7 @@ const ViewPost: React.FC<{data: {title:string, imgUrl: string, content: string, 
                         h1: ({children}) => <h1 onClick={copyLink} className="pb-8 text-4xl font-fira mt-4 mb-2 flex flex-row items-center group hover:cursor-pointer">
                                 <i className="opacity-0 group-hover:opacity-100 transition fa-solid fa-link text-gray-600 text-xl"></i>
                                 &nbsp;&nbsp;
-                                <div id={children.toLowerCase().replace(/\s+/g, '-')} className="flex flex-col">
+                                <div id={(children?.toLowerCase() ?? '').replace(/\s+/g, '-')} className="flex flex-col">
                                     {children}
                                 </div>
                             </h1>,
