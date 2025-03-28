@@ -8,9 +8,10 @@ import { EnvConf } from '../lib/env';
 const Blog: React.FC<{data: Array<{title: string, description: string, content: string, imgUrl: string, _id: string}>}> = ({ data }) => {
     const [state, setState] = useState<{posts: Array<{title: string, description: string, content: string, imgUrl: string, _id: string}>}>({posts: []});
     const router = useRouter();
+    const reversedData = data.reverse();
 
     useEffect(() => {
-        setState({...state, posts: data.reverse()});
+        setState({...state, posts: reversedData});
     }, [])
 
     return(
