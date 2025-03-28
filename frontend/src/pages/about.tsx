@@ -30,7 +30,7 @@ const About = () => {
                                     <span>My name is Aaron Garces del Garro</span>
                                     <span className="flex flex-row items-center">
                                         <span className="text-gray-300">&nbsp;A.K.A&nbsp;</span>
-                                        <span className="text-cyan-400 hover:underline hover:cursor-pointer" onClick={() => document.location.href = process.env.GITHUB_LINK as string}>Preciado</span>
+                                        <span className="text-cyan-400 hover:underline hover:cursor-pointer" onClick={() => document.location.href = process.env.GH_LINK as string}>Preciado</span>
                                     </span>
                                 </h2>
                                 <div className="text-xl md:text-2xl text-gray-300 space-y-4 text-center lg:text-left">

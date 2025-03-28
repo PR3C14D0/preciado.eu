@@ -11,7 +11,7 @@ const Navbar = () => {
                     <Link prefetch={true} href="/portfolio" className="hover:text-gray-400 transition"><i className="fa-brands fa-squarespace text-orange-700 invisible xl:visible"></i>&nbsp;Portfolio</Link>
                     <Link prefetch={true} href="/blog" className="hover:text-gray-400 transition"><i className="fa-solid fa-rss text-green-600 invisible xl:visible"></i>&nbsp;Blog</Link>
                     <Link href="/about" className="hover:text-gray-400 transition"><i className="fa-solid fa-address-card text-red-500 invisible xl:visible"></i>&nbsp;About</Link>
-                    <a href={`${process.env.GITHUB_LINK as string}`} className="hover:text-gray-700 text-white transition invisible xl:visible"><i className="fa-brands fa-github"></i></a>
+                    <a href={`${process.env.GH_LINK as string}`} className="hover:text-gray-700 text-white transition invisible xl:visible"><i className="fa-brands fa-github"></i></a>
                     <a href={`${process.env.LNK_LINK as string}`} className="text-white hover:text-blue-500 transition invisible xl:visible"><i className="fa-brands fa-linkedin"></i></a>
                 </div>
             </nav>

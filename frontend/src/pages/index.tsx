@@ -24,7 +24,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 w-full max-w-xl justify-center">
-                    <a href={`${process.env.GITHUB_LINK as string}`} className="py-3 md:py-4 px-6 md:px-8 rounded bg-gray-800 text-white font-semibold text-lg md:text-xl flex flex-row border border-gray-900 border-2 items-center justify-center space-x-2 hover:bg-white hover:text-black transition hover:cursor-pointer">
+                    <a href={`${process.env.GH_LINK as string}`} className="py-3 md:py-4 px-6 md:px-8 rounded bg-gray-800 text-white font-semibold text-lg md:text-xl flex flex-row border border-gray-900 border-2 items-center justify-center space-x-2 hover:bg-white hover:text-black transition hover:cursor-pointer">
                         <i className="fa-brands fa-github"></i>
                         <p>GitHub</p>
                     </a>
