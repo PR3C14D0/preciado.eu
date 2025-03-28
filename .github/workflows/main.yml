@@ -41,7 +41,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           source: "frontend/*"
-          target: "~/frontend/"
+          target: "~/"
       - name: 📨 Deploy using SSH
         uses: appleboy/ssh-action@master
         with:
