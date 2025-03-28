@@ -57,5 +57,6 @@ jobs:
           port: 22
           script: |
             cd ~/frontend
+            PATH=$PATH:/${{ secrets.USERNAME }}/.nvm/versions/node/v22.14.0/bin
             pm2 start npm -- start
              
