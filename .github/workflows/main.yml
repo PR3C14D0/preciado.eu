@@ -17,8 +17,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 22
+      
+      - name: 🔒 Create .env file
+        run: |
+          cd frontend
+          touch .env
+          echo NEXT_PUBLIC_PAGE_TITLE=${{ secrets.NEXT_PUBLIC_PAGE_TITLE }} >> .env
+          echo NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }} >> .env
+          echo LNK_LINK=${{ secrets.LNK_LINK }} >> .env
+          echo GH_LINK=${{ secrets.GH_LINK }} >> .env
 
-      # FRONTEND (Next.js)
       - name: 📦 Install dependencies (Frontend)
         run: |
           cd frontend
@@ -27,6 +35,7 @@ jobs:
         run: |
           cd frontend
           npm run build
+
       - name: 📤 Upload frontend build artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -51,4 +60,5 @@ jobs:
           port: 22
           script: |
             cd ~/frontend
+            pm2 start npm -- start
              
