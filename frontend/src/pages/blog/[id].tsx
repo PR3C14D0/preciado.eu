@@ -100,7 +100,7 @@ const ViewPost: React.FC<{data: {title:string, imgUrl: string, content: string, 
                         a: ({children, href}) => <a href={href} className="font-fira text-sky-400 hover:text-sky-600 hover:underline transition">{children}</a>,
                         p: ({children}) => <p className="text-white font-fira text-lg">{children}</p>,
                         li: ({className, children}) => <li className={`${className ? className : ""} pl-8 flex flex-row space-x-1 items-center`}>•&nbsp;&nbsp;{children}</li>,
-                        code: ({node, className, children, ...props}) => {
+                        code: ({node, className, children}) => {
                             const match = /language-(\w+)/.exec(className || '')
                             const language = match ? match[1] : 'text'
 
@@ -108,7 +108,6 @@ const ViewPost: React.FC<{data: {title:string, imgUrl: string, content: string, 
 
                             return isLanguage ? (
                                 <SyntaxHighlighter
-                                    {...props}
                                     language={language}
                                     style={atomDark}
                                     PreTag="div"
