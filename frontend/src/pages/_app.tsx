@@ -41,6 +41,7 @@ const App = ({Component, pageProps}: AppProps) => {
                 <meta property="og:title" content="Preciado" />
                 <meta property="og:description" content="Aaron Garces del Garro Preciado | Developer" />
                 <meta property="og:image" content="/img/PreciadoLogoBg.png" />
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1387954522765595" crossOrigin="anonymous"></script>
             </Head>
             <GridPattern width={25} height={25} z={-10} strokeDasharray={"4 2"} className={cn("absolute inset-0 -z-10", "[mask-image:radial-gradient(500px_400px_at_center,white,transparent)]",)}></GridPattern>
             <Toaster />
