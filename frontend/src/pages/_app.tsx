@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 import Head from 'next/head';
 
@@ -47,6 +48,7 @@ const App = ({Component, pageProps}: AppProps) => {
             <Toaster />
             <Navbar />
             <Component {...pageProps}/>
+            <Footer />
         </div>
     )
 }
