@@ -1,20 +1,45 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Menu, { IMenuRef } from './Menu'
+import { useRouter } from 'next/router';
 
 const Navbar = () => {
+    const [isActive, setIsActive] = useState(false);
+    const menuRef = useRef<IMenuRef>(null);
+    const router = useRouter();
+
+    const handleClick = () => {
+        setIsActive(!isActive);
+        menuRef.current?.openMenu();
+    }
+
+    useEffect(() => {
+        const handleRouterChange = (url: string) => {
+            setIsActive(false);
+        }
+        router.events.on('routeChangeComplete', handleRouterChange);
+
+        return () => {
+            router.events.off('routeChangeComplete', handleRouterChange);
+        }
+    }, [router])
+    
     return(
         <Fragment>
-            <nav className="flex flex-row justify-between pr-16 pl-20 py-4 items-center bg-gradient-to-b from-neutral-950/80 from-5% via-neutral-950/50 via-50% to-transparent to-95% align-center z-10 sticky top-0">
-                <Link href="/" className="text-white font-semibold text-xl invisible xl:visible"><Image alt="preciado-logo" className="hover:cursor-pointer hover:bg-zinc-800 hover:border-zinc-700 transition rounded-lg border-2 border-transparent pr-1 pt-1" src="/img/PreciadoLogoBg.png" width={60} height={60} /></Link>
-                <div className="text-white flex flex-row items-center justify-center font-semibold space-x-4 text-lg hover:cursor-pointer">
-                    <Link prefetch={true} href="/portfolio" className="hover:text-gray-400 transition"><i className="fa-brands fa-squarespace text-orange-700 invisible xl:visible"></i>&nbsp;Portfolio</Link>
-                    <Link prefetch={true} href="/blog" className="hover:text-gray-400 transition"><i className="fa-solid fa-rss text-green-600 invisible xl:visible"></i>&nbsp;Blog</Link>
-                    <Link href="/about" className="hover:text-gray-400 transition"><i className="fa-solid fa-address-card text-red-500 invisible xl:visible"></i>&nbsp;About</Link>
-                    <a href={`${process.env.GH_LINK as string}`} className="hover:text-gray-700 text-white transition invisible xl:visible"><i className="fa-brands fa-github"></i></a>
-                    <a href={`${process.env.LNK_LINK as string}`} className="text-white hover:text-blue-500 transition invisible xl:visible"><i className="fa-brands fa-linkedin"></i></a>
+            <div className="flex flex-row items-center">
+                <nav className="flex flex-row justify-between pr-16 pl-20 py-4 items-center bg-gradient-to-b from-neutral-950/80 from-5% via-neutral-950/50 via-50% to-transparent to-95% align-center z-10 sticky top-0">
+                    <Link href="/" className="text-white font-semibold text-xl invisible xl:visible"><Image alt="preciado-logo" className="hover:cursor-pointer hover:bg-zinc-800 hover:border-zinc-700 transition rounded-lg border-2 border-transparent pr-1 pt-1" src="/img/PreciadoLogoBg.png" width={60} height={60} /></Link>
+                </nav>
+                <div onClick={() => handleClick()} className="fixed right-15 z-40 flex flex-row items-center hover:cursor-pointer font-fira">
+                    <span className="text-white">Menu</span>
+                    <div className="flex flex-col space-y-0 p-4">
+                        <span className={`w-[30px] h-[3px]  rounded-xl translate-y-[2px]  transition-transform ${isActive ? 'rotate-45 bg-white' : 'rotate-0 bg-white'}`}></span>
+                        <span className={`w-[30px] h-[3px] rounded-xl -translate-y-[1px]  transform  transition-transform ${isActive ? '-rotate-45 bg-white' : 'rotate-0 bg-white'}`}></span>
+                    </div>
                 </div>
-            </nav>
+            </div>
+            <Menu ref={menuRef}/>
         </Fragment>
     )
 }

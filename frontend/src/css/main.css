@@ -3,3 +3,8 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
+@theme {
+    --font-fira: "Fira Sans", "sans-serif";
+    --font-anton: "Anton", "sans-serif";
+}
