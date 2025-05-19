@@ -28,7 +28,7 @@ const Navbar = () => {
     return(
         <Fragment>
             <div className="flex flex-row items-center">
-                <nav className="flex flex-row justify-between pr-16 pl-20 py-4 items-center bg-gradient-to-b from-neutral-950/80 from-5% via-neutral-950/50 via-50% to-transparent to-95% align-center z-10 sticky top-0">
+                <nav className="sticky flex flex-row justify-between pr-16 pl-20 py-4 items-center bg-gradient-to-b from-neutral-950/80 from-5% via-neutral-950/50 via-50% to-transparent to-95% align-center z-10 top-0">
                     <Link href="/" className="text-white font-semibold text-xl invisible xl:visible"><Image alt="preciado-logo" className="hover:cursor-pointer hover:bg-zinc-800 hover:border-zinc-700 transition rounded-lg border-2 border-transparent pr-1 pt-1" src="/img/PreciadoLogoBg.png" width={60} height={60} /></Link>
                 </nav>
                 <div onClick={() => handleClick()} className="fixed right-15 z-40 flex flex-row items-center hover:cursor-pointer font-fira">

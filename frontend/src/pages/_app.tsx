@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import dynamic from 'next/dynamic';
 
 import Head from 'next/head';
 
@@ -11,7 +12,7 @@ import { GridPattern } from '../components/ui/grid-pattern';
 import { AppProps } from 'next/app';
 import toast, { Toaster } from 'react-hot-toast';
 import { EnvConf } from '@/src/lib/env';
-
+import AdBlockDetector from '../components/AdBlockDetector';
 
 const App = ({Component, pageProps}: AppProps) => {
     useEffect(() => {
@@ -46,6 +47,7 @@ const App = ({Component, pageProps}: AppProps) => {
             </Head>
             <GridPattern width={25} height={25} z={-10} strokeDasharray={"4 2"} className={cn("absolute inset-0 -z-10", "[mask-image:radial-gradient(500px_400px_at_center,white,transparent)]",)}></GridPattern>
             <Toaster />
+            <AdBlockDetector />
             <Navbar />
             <Component {...pageProps}/>
             <Footer />
