@@ -4,7 +4,7 @@ import Link from 'next/link';
 const Footer = () => {
     return(
         <Fragment>
-            <footer className="mx-8 mb-8 mt-16">
+            <footer className="fixed bottom-0 left-0 w-full py-2 mx-8 mt-16 bg-neutral-950">
                 <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
                     <span className="text-sm text-white sm:text-center">© 2025 <a href="https://www.preciado.eu/" className="hover:underline">www.preciado.eu</a>.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Todos los derechos reservados</span>
                     <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 sm:mt-0">

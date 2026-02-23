@@ -10,8 +10,9 @@ const Navbar = () => {
     const router = useRouter();
 
     const handleClick = () => {
-        setIsActive(!isActive);
-        menuRef.current?.openMenu();
+        const next = !isActive;
+        setIsActive(next);
+        menuRef.current?.toggle(next);
     }
 
     useEffect(() => {

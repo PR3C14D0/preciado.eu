@@ -71,15 +71,15 @@ const ViewPost: React.FC<{data: {title:string, imgUrl: string, content: string, 
             </div>
 
             {/* Title Section */}
-            <div className="relative top-[30vh] left-1/2 transform -translate-x-1/2 text-center max-w-3xl px-4">
+            <div className="max-w-3xl mx-auto text-center px-4 py-8">
                 <h1 className="text-4xl font-fira mb-4">{state.title}</h1>
                 <div className="flex justify-center items-center space-x-4 mb-4">
                     <Image
-                        width={36}
-                        height={36}
-                        className="rounded-full border-2 border-sky-600"
-                        alt="User Avatar"
-                        src="/img/PreciadoPFP.png"
+                    width={36}
+                    height={36}
+                    className="rounded-full border-2 border-sky-600"
+                    alt="User Avatar"
+                    src="/img/PreciadoPFP.png"
                     />
                     <h2 className="text-sm font-thin">Aaron Garces del Garro</h2>
                 </div>
